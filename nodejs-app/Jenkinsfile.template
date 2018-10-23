@@ -3,12 +3,11 @@ pipeline {
   options { 
     buildDiscarder(logRotator(numToKeepStr: '2'))
   }
-  stages {
-    stage('Say Hello') {
-      steps {
+  stage('Test') {
+    steps {
+      container('nodejs') {
         echo 'Hello World!'   
-        sh 'java -version'
+        sh 'node --version'
       }
     }
   }
-}
